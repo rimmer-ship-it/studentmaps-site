@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["844JGY6BV6.com.studentmaps"],
+        "components": [
+          {
+            "/": "/venue/*",
+            "comment": "Opens venue detail in Student Maps app"
+          }
+        ]
+      }
+    ]
+  }
+}
