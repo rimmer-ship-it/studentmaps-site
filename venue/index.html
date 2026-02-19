@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Student Maps">
+  <meta property="og:description" content="Bekijk deze locatie op Student Maps — de beste plekken voor studenten.">
+  <meta property="og:image" content="https://studentmaps.nl/og-image.png">
+  <meta property="og:url" content="https://studentmaps.nl">
+  <meta property="og:type" content="website">
+
+  <title>Student Maps</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f5f7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px 32px;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 15px;
+      color: #6e6e73;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+    a {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #00b5ad;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="/og-image.png" alt="Student Maps">
+    <h1>Student Maps</h1>
+    <p>Download de app om deze locatie te bekijken en de beste plekken voor studenten te ontdekken.</p>
+    <a href="https://apps.apple.com/nl/app/studentmaps/idJOUW_APP_ID">
+      Download de app
+    </a>
+  </div>
+</body>
+</html>
+```
+
+5. Commit directly to main
+
+> Vul later `idJOUW_APP_ID` in zodra je app in de App Store staat.
+
+---
+
+## Stap 3 — Controleren
+
+Wacht 2 minuten en ga naar:
+```
+https://studentmaps.nl/venue/
+```
+
+Je ziet de fallback pagina. En als je `https://studentmaps.nl/og-image.png` bezoekt zie je je afbeelding.
+
+---
+
+## Stap 4 — Link preview testen
+
+Stuur de link naar jezelf in iMessage:
+```
+https://studentmaps.nl/venue/test/00000000-0000-0000-0000-000000000000
