@@ -6,8 +6,7 @@
         "appIDs": ["844JGY6BV6.com.studentmaps"],
         "components": [
           {
-            "/": "/spot/*",
-            "comment": "Opens spot detail in Student Maps app"
+            "/": "/spot/*"
           }
         ]
       }
