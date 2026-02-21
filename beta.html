@@ -34,6 +34,7 @@
     }
     .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     @media (max-width: 720px) { .row { grid-template-columns: 1fr; } }
+
     .hint { opacity: 0.8; font-size: 14px; }
     .actions { margin-top: 18px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
     button {
@@ -50,6 +51,24 @@
     .link { font-size: 14px; opacity: 0.9; }
     .link a { color: inherit; }
     .ok { display: none; margin-top: 14px; padding: 12px; border-radius: 12px; border: 1px solid rgba(127,127,127,0.25); }
+
+    /* NEW: checkbox layout (checkbox left of text) */
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+    .consent input[type="checkbox"] {
+      width: auto;
+      margin: 2px 0 0;
+      padding: 0;
+    }
+    .consent span {
+      font-weight: 600;
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
@@ -75,9 +94,22 @@
         </div>
       </div>
 
-      <label>
+      <!-- NEW: Phone number field -->
+      <label for="phone">Phone number</label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        inputmode="tel"
+        autocomplete="tel"
+        placeholder="+31 6 12345678"
+        required
+      />
+
+      <!-- UPDATED: checkbox left of text -->
+      <label class="consent">
         <input name="consent" type="checkbox" required />
-        I agree that Student Maps may use my name and email to contact me about beta testing.
+        <span>I agree that Student Maps may use my name and email to contact me about beta testing.</span>
       </label>
 
       <!-- Honeypot (spam protection) -->
