@@ -116,30 +116,6 @@ body {
 .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2rem; font-weight: 300; }
 .cta-buttons { display: flex; gap: 1rem; justify-content: center; }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    background: rgba(255, 255, 255, 0.5); /* Licht transparant voor glass look */
-    color: var(--text-primary);
-    font-family: inherit;
-    transition: border-color 0.2s;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
 /* CTA BUTTONS */
 .btn {
   display: inline-flex;
@@ -440,10 +416,10 @@ body {
 
 /* Section wrapper */
 .page-section {
-  padding: 1rem 0 var(--spacing-xl);
+  padding: 2rem 0 var(--spacing-xl);
   min-height: 60vh;
   display: flex;
-  align-items: flex-start; /* Keeps the card near the top on large screens */
+  align-items: flex-start; /* Keeps the card near the top */
   justify-content: center;
 }
 
@@ -458,20 +434,50 @@ body {
   color: var(--text-primary);
   margin: 0 auto;
   width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't add to width */
 }
 
 /* Width modifiers */
-.page-card-sm { max-width: 600px; } /* Perfect for forms */
-.page-card-lg { max-width: 900px; } /* Perfect for legal text */
+.page-card-sm { 
+    max-width: 550px; /* Perfect balance for desktop forms */
+} 
+.page-card-lg { 
+    max-width: 900px; /* For text-heavy pages like Privacy */
+}
 
-/* Typography inside text-heavy cards */
+/* Typography inside cards */
 .page-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; }
 .page-card h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); font-weight: 500; }
 .page-card p { margin-bottom: 1rem; color: var(--text-secondary); }
 .page-card ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-secondary); }
 .page-card li { margin-bottom: 0.5rem; }
 
-/* Specific components */
+/* Form components inside the card */
+.page-card .form-group { 
+    margin-bottom: 1.5rem; 
+    text-align: left; 
+    width: 100%; 
+}
+.page-card label { display: block; margin-bottom: 0.6rem; font-weight: 500; opacity: 0.9; }
+.page-card input { 
+  width: 100%; 
+  padding: 1rem; /* Slightly larger padding for better touch/feel */
+  border-radius: 12px; 
+  border: 1px solid var(--glass-border); 
+  background: rgba(255, 255, 255, 0.5); 
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box; /* Crucial for "fitted" mobile look */
+}
+
+.page-card input:focus {
+  outline: 2px solid var(--primary);
+  border-color: transparent;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Decoration */
 .meta-text { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; display: block; }
 .intro-box {
   border: 1px solid var(--glass-border);
@@ -481,32 +487,23 @@ body {
   background: rgba(0,0,0,0.02);
 }
 
-/* Form styles inside the page card (Beta form) */
-.page-card .form-group { margin-bottom: 1.5rem; text-align: left; }
-.page-card label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
-.page-card input { 
-  width: 100%; 
-  padding: 0.8rem; 
-  border-radius: 12px; 
-  border: 1px solid var(--glass-border); 
-  background: rgba(255, 255, 255, 0.5); 
-  color: var(--text-primary);
-  font-family: inherit;
-}
-.page-card input:focus {
-  outline: 2px solid var(--primary);
-  border-color: transparent;
-}
-
-/* Dark mode overrides for new components */
+/* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .intro-box { background: rgba(255, 255, 255, 0.05); }
-  .page-card input { background: rgba(0, 0, 0, 0.2); }
+  .page-card input { 
+    background: rgba(0, 0, 0, 0.2); 
+    border-color: rgba(255,255,255,0.1);
+  }
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  .page-card { padding: 1.5rem; }
+  .page-section {
+    padding: 1rem 1rem var(--spacing-lg); /* Add side padding on mobile */
+  }
+  .page-card { 
+    padding: 2rem 1.5rem; /* Less padding inside so the form feels wider on small screens */
+  }
   .page-card h1 { font-size: 1.8rem; }
 }
 
