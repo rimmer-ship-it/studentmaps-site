@@ -224,35 +224,50 @@ body {
   position: relative;
   width: 270px; 
   height: 560px;
-  background: #1c1c1e;
+  /* Nieuw: Titanium Metallic glans effect */
+  background: linear-gradient(135deg, 
+    #9ea1a5 0%, 
+    #4f5154 15%, 
+    #2a2b2e 50%, 
+    #4f5154 85%, 
+    #9ea1a5 100%
+  );
   border-radius: 50px;
   padding: 8px; /* Dunnere bezels */
   box-shadow: 
-    0 0 0 1px #444, 
-    inset 0 0 2px 1px rgba(255,255,255,0.15),
-    0 20px 40px rgba(0,0,0,0.3);
+    inset 0 0 3px 1px rgba(255,255,255,0.4), /* Metallic highlight aan de binnenrand */
+    0 0 0 1px rgba(0,0,0,0.8), /* Strakke buitenlijn */
+    0 25px 50px rgba(0,0,0,0.4); /* Diepe drop shadow */
   z-index: 10;
 }
 
-/* Fysieke Knoppen */
+/* Fysieke Knoppen met Metallic Finish */
 .buttons-left, .power-btn, .camera-control {
   position: absolute;
-  background: #2c2c2e;
   width: 3px;
   border-radius: 2px;
   z-index: -1;
 }
 
 .buttons-left { left: -3px; top: 100px; width: 3px; height: 120px; background: transparent; }
-.action-btn { position: absolute; top: 0; width: 3px; height: 24px; background: #3a3a3c; left: 0; border-radius: 2px 0 0 2px; }
-.vol-up { position: absolute; top: 40px; width: 3px; height: 46px; background: #3a3a3c; left: 0; border-radius: 2px 0 0 2px; }
-.vol-down { position: absolute; top: 96px; width: 3px; height: 46px; background: #3a3a3c; left: 0; border-radius: 2px 0 0 2px; }
+
+/* 3D cilinder effect voor de standaard knoppen */
+.action-btn, .vol-up, .vol-down, .power-btn {
+  background: linear-gradient(to right, #444, #888, #333);
+}
+
+.action-btn { position: absolute; top: 0; width: 3px; height: 24px; left: 0; border-radius: 2px 0 0 2px; }
+.vol-up { position: absolute; top: 40px; width: 3px; height: 46px; left: 0; border-radius: 2px 0 0 2px; }
+.vol-down { position: absolute; top: 96px; width: 3px; height: 46px; left: 0; border-radius: 2px 0 0 2px; }
 
 .power-btn { right: -3px; top: 150px; height: 80px; border-radius: 0 2px 2px 0; }
+
+/* Camera control heeft een holle / ingedrukte look */
 .camera-control { 
   right: -3px; top: 360px; height: 40px; 
-  background: linear-gradient(to bottom, #2c2c2e, #4a4a4c, #2c2c2e); 
+  background: linear-gradient(to bottom, #333, #999, #333); 
   border-radius: 0 2px 2px 0;
+  box-shadow: inset 1px 0 3px rgba(0,0,0,0.8);
 }
 
 .phone-screen { 
@@ -261,7 +276,7 @@ body {
 }
 .phone-screenshot { width: 100%; height: 100%; object-fit: cover; }
 
-/* Dynamic Island i.p.v. Notch */
+/* Dynamic Island */
 .dynamic-island {
   position: absolute;
   top: 14px;
@@ -272,6 +287,40 @@ body {
   background: #000;
   border-radius: 20px;
   z-index: 10;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255,255,255,0.06),
+    0 0 4px rgba(0,0,0,0.6);
+}
+
+/* Nieuw: Camera Lens glinstering (rechterkant island) */
+.dynamic-island::after {
+  content: '';
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  /* Donkerblauwe/paarse lens reflectie */
+  background: radial-gradient(circle at 35% 35%, #2c3e66 0%, #050505 55%);
+  box-shadow: 
+    inset 0 0 2px rgba(255,255,255,0.5), /* Felle glans op het glas */
+    0 0 1px rgba(255,255,255,0.1);
+}
+
+/* Nieuw: FaceID Sensor (linkerkant island) */
+.dynamic-island::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #1a1a1a 0%, #000 60%);
+  box-shadow: inset 0 0 1px rgba(255,255,255,0.15);
 }
 
 /* Scherm reflectie */
