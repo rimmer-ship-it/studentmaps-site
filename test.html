@@ -7,26 +7,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 1. MENUBAR -->
     <nav class="nav">
         <div class="container nav-container">
             <a href="#home" class="nav-brand">
                 <img src="logo-clear.png" alt="Student Maps" class="nav-logo">
                 <span>Student Maps</span>
             </a>
-            <div class="nav-links">
+            <!-- CHANGE 1: nav-links gesplitst in center en right -->
+            <div class="nav-center">
+                <a href="#home">Home</a>
                 <a href="#features">Features</a>
+                <a href="#About Us">About Us</a>
+            </div>
+            <div class="nav-right">
                 <a href="#download" class="btn btn-primary btn-sm">Download</a>
             </div>
         </div>
     </nav>
 
-    <!-- 2. HEADERSECTIE (tekst + knoppen) -->
     <section class="hero-header" id="home">
-        <div class="hero-logo"></div>
         <h1 class="hero-title">
-            Discover the best spots<br>
-            <span class="gradient-text">for students</span>
+            Discover the best spots in your city
         </h1>
         <p class="hero-subtitle">
             Student Maps helps you find the best spots for your needs. 
@@ -38,9 +39,61 @@
         </div>
     </section>
 
-    <!-- 3. PHONE MET CARDS -->
+    <section class="hero-visual-section">
+        <div class="hero-visual">
+            <div class="phone-container">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <img src="map.png" alt="App Screenshot" class="phone-screenshot" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card card-4">
+                <div class="card-header">
+                    <h3>Spot types</h3>
+                </div>
+                <div class="card-content">
+                    <img src="type1.png" alt="Type 1" class="card-img" />
+                    <img src="type2.png" alt="Type 2" class="card-img" />
+                    <img src="type3.png" alt="Type 3" class="card-img" />
+                    <img src="type4.png" alt="Type 4" class="card-img" />
+                </div>
+            </div>
+
+            <div class="glass-card card-5">
+                <div class="card-header">
+                    <h3>Sign in methods</h3>
+                </div>
+                <div class="card-content">
+                    <img src="apple-button.png" alt="Type 1" class="card-img" />
+                    <img src="google-button.png" alt="Type 2" class="card-img" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="phone-section-overlay">
+        <div class="phone-section-overlay-inner">
+            <span class="phone-overlay-text">Discover the best spots in a few clicks</span>
+        </div>
+    </div>
+
+    <section class="scroll-text-section">
+        <div class="container">
+            <div class="reveal-text">
+                <p class="reveal-paragraph">
+                    <span class="reveal-line">Student Maps is a community driven platform. </span><span class="reveal-line">Find what you are looking for based on the experiences and suggestions of other students.</span>
+                </p>
+                <p class="reveal-paragraph">
+                    <span class="reveal-line">Add your own content, suggested spots, tags and reviews. </span><span class="reveal-line">Vote on suggestions of others.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section class="hero-visual-section" id="visual">
-        <!-- IPHONE -->
         <div class="hero-visual">
             <div class="phone-container">
                 <div class="phone-mockup">
@@ -50,43 +103,31 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 3 GLASS CARDS VERTICAAL ONDER ELKAAR -->
-        <!-- My Spots Card (eerste glass-card) -->
-        <div class="glass-card">
-          <!-- 1.1 Titel -->
-          <div class="card-header">
-              <span class="card-icon">📍</span>
-              <h3>My Spots</h3>
-          </div>
-          
-          <!-- 1.2 HStack met 2 pills -->
-          <div class="pill-hstack">
-              <div class="pill pill-white">Suggested</div>
-              <div class="pill pill-transparent">Approved</div>
-          </div>
-          
-          <!-- 1.3 VStack met PNG images -->
-          <div class="images-vstack">
-              <img src="suggested1.png" alt="Suggested spot 1" class="screenshot-item" />
-              <img src="suggested2.png" alt="Suggested spot 2" class="screenshot-item" />
-          </div>
-          
-          <!-- 1.4 Plus button -->
-          <div class="card-footer">
-              <span>Suggest a new spot</span>
-              <button class="plus-btn-large">+</button>
-          </div>
-        </div>
-            <!-- Card 2: My Reviews -->
-            <div class="glass-card">
+            <div class="glass-card card-1">
                 <div class="card-header">
-                    <span class="card-icon">⭐</span>
+                    <h3>My Spots</h3>
+                </div>
+                <div class="pill-hstack">
+                    <div class="pill pill-white">Suggested</div>
+                    <div class="pill pill-transparent">Approved</div>
+                </div>
+                <div class="card-content">
+                    <img src="suggested1.png" alt="Spot 1" class="card-img" />
+                    <img src="suggested2.png" alt="Spot 2" class="card-img" />
+                </div>
+                <div class="card-footer">
+                    <span>Suggest a new spot</span>
+                    <button class="plus-btn-large">+</button>
+                </div>
+            </div>
+
+            <div class="glass-card card-2">
+                <div class="card-header">
                     <h3>My Reviews</h3>
                 </div>
-                <div class="screenshot-list">
-                    <img src="review1.png" alt="Review" class="screenshot-item" />
+                <div class="card-content">
+                    <img src="review1.png" alt="Review" class="card-img" />
                 </div>
                 <div class="card-footer">
                     <span>Write Review</span>
@@ -94,11 +135,9 @@
                 </div>
             </div>
 
-            <!-- Card 3: Search -->
-            <div class="glass-card">
+            <div class="glass-card card-3">
                 <div class="card-header">
-                    <span class="card-icon">🔍</span>
-                    <h3>Search Others</h3>
+                    <h3>Find People/h3>
                 </div>
                 <div class="search-bar-ios">
                     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -115,31 +154,50 @@
         </div>
     </section>
 
-    <!-- 4. LAATSTE SECTIE -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title">Everything you need</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon"></div>
-                    <h3>Interactive Map</h3>
-                    <p>Discover new venues through other students reviews.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"></div>
-                    <h3>Community</h3>
-                    <p>Share your favorite spots and honest reviews.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"></div>
-                    <h3>Reputation</h3>
-                    <p>Build your profile by contributing reviews.</p>
+    <!-- CHANGE 3: features-wrapper voor scroll-up animatie -->
+    <div class="features-wrapper">
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">Everything you need</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                      <h3>Specific tags and types</h3>
+                      <p>Discover spots in your city with new and specific categories.</p>
+                      <div class="feature-visual">
+                          <img src="tag1.png" alt="E-sigarettes" class="feature-screenshot">
+                          <img src="tag2.png" alt="Tobacco" class="feature-screenshot">
+                          <img src="tag3.png" alt="Alcohol" class="feature-screenshot">
+                      </div>
+                  </div>
+                    <div class="feature-item">
+                        <h3>Easy sharing and navigation</h3>
+                        <p>Share spots easily by sending a link and navigate with Apple or Google Maps.</p>
+                        <div class="feature-phone-crop">
+                            <div class="phone-mockup mini">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <img src="spot.png" alt="Share spots" class="phone-screenshot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Earn points and reputation</h3>
+                        <p>Build your profile by contributing reviews and suggesting spots.</p>
+                        <div class="feature-phone-crop">
+                            <div class="phone-mockup mini">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <img src="points.png" alt="Earn points" class="phone-screenshot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- 5. FOOTER -->
     <footer class="footer">
         <div class="container">
             <p class="footer-copy">&copy; 2026 Student Maps. All rights reserved.</p>
