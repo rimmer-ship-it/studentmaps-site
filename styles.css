@@ -14,13 +14,9 @@
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 6rem;
-  
-  /* iPhone 16 Pro Variables */
-  --phone-radius: 54px;
-  --bezel-width: 8px;
-  --phone-color: #1c1c1e;
 }
 
+/* FIX: media query staat nu BUITEN :root — dark mode werkt nu correct */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #000000;
@@ -29,365 +25,434 @@
     --text-secondary: #D1D5DB;
     --glass-bg: rgba(255, 255, 255, 0.08);
     --nav-bg: rgba(0, 0, 0, 0.75);
-    --glass-border: rgba(255, 255, 255, 0.1);
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-.container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--spacing-md); }
 
-/* NAVIGATION */
+/* NAV */
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1rem 0; background: var(--nav-bg);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
+/* CHANGE 1: nav-container als 3-kolom grid zodat center echt centraal staat */
 .nav-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  height: 72px;
 }
 
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 700;
-  font-size: 1.25rem;
-}
+.nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); font-weight: 600; transition: color 0.4s ease; }
+.nav-logo { width: 44px; height: 44px; }
 
-.nav-logo {
-  height: 32px;
-  width: auto;
-}
-
+/* CHANGE 1: nav-center staat in het midden, nav-right rechts uitgelijnd */
 .nav-center {
   display: flex;
-  gap: 2rem;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
 }
 
 .nav-center a {
-  text-decoration: none;
   color: var(--text-secondary);
-  font-weight: 500;
-  transition: color 0.2s;
+  text-decoration: none;
+  transition: color 0.4s ease;
 }
 
-.nav-center a:hover {
-  color: var(--primary);
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-/* HERO SECTION */
+/* CHANGE 3: Nav dark mode wanneer over features sectie */
+.nav.nav-dark {
+  background: rgba(10, 10, 10, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav.nav-dark .nav-brand {
+  color: #ffffff;
+}
+
+.nav.nav-dark .nav-center a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* HERO HEADER */
 .hero-header {
-  padding: 120px 0 60px;
-  text-align: center;
+  padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-md);
+  text-align: center; max-width: 720px; margin: 0 auto;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-weight: 800;
+  font-size: 70px;
+  font-weight: 500;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-}
+.gradient-text { color: var(--text-primary); font-weight: 600; }
+.hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2rem; font-weight: 300; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; }
 
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
+/* CTA BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.875rem 1.75rem;
-  border-radius: 99px;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s;
-  cursor: pointer;
   border: none;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .btn-primary {
   background: var(--primary);
-  color: white;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(3, 195, 209, 0.35);
 }
 
 .btn-secondary {
-  background: var(--bg-secondary);
+  background: var(--glass-bg);
   color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 .btn-sm {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.9rem;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.875rem;
 }
 
-/* IPHONE 16 PRO MOCKUP STYLES */
-.hero-visual-section {
-  padding: 40px 0 100px;
-  display: flex;
-  justify-content: center;
-  perspective: 1000px;
-}
-
-.hero-visual {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  height: 650px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.phone-mockup {
-  position: relative;
-  width: 280px;
-  height: 580px;
-  background: var(--phone-color);
-  border-radius: var(--phone-radius);
-  padding: var(--bezel-width);
-  box-shadow: 
-    0 0 0 1px #444, 
-    inset 0 0 2px 1px rgba(255,255,255,0.15),
-    0 30px 60px rgba(0,0,0,0.5);
-  z-index: 10;
-  transition: transform 0.1s ease-out;
-}
-
-/* Side Buttons */
-.buttons-left, .power-btn, .camera-control {
-  position: absolute;
-  background: #2c2c2e;
-  width: 3px;
-  border-radius: 2px;
-  z-index: -1;
-}
-
-.buttons-left { left: -3px; top: 100px; width: 3px; height: 120px; background: transparent; }
-.action-btn { position: absolute; top: 0; width: 3px; height: 26px; background: #3a3a3c; left: 0; border-radius: 2px 0 0 2px; }
-.vol-up { position: absolute; top: 45px; width: 3px; height: 50px; background: #3a3a3c; left: 0; border-radius: 2px 0 0 2px; }
-.vol-down { position: absolute; top: 105px; width: 3px; height: 50px; background: #3a3a3c; left: 0; border-radius: 2px 0 0 2px; }
-
-.power-btn { right: -3px; top: 165px; height: 85px; border-radius: 0 2px 2px 0; }
-.camera-control { 
-  right: -3px; top: 385px; height: 45px; 
-  background: linear-gradient(to bottom, #2c2c2e, #4a4a4c, #2c2c2e); 
-  border-radius: 0 2px 2px 0;
-}
-
-.phone-screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  border-radius: calc(var(--phone-radius) - var(--bezel-width));
-  overflow: hidden;
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-}
-
-.dynamic-island {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85px;
-  height: 26px;
-  background: #000;
-  border-radius: 20px;
-  z-index: 10;
-}
-
-.phone-reflection {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
-  pointer-events: none;
-  z-index: 5;
-}
-
-.phone-screenshot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* CARDS AROUND PHONE */
-.glass-card {
-  position: absolute;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 1.25rem;
-  width: 240px;
-  z-index: 20;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card-1 { top: 5%; left: 0; }
-.card-2 { bottom: 20%; left: -5%; }
-.card-3 { top: 40%; right: -5%; }
-.card-4 { top: 0%; right: 0%; width: 280px; }
-.card-5 { bottom: 10%; left: 5%; width: 220px; }
-
-/* REVEAL TEXT SECTION */
+/* SCROLL TEXT SECTION */
 .scroll-text-section {
-  padding: 100px 0;
-  background: var(--bg);
+  padding: var(--spacing-xl) 0;
+  text-align: left;
 }
 
 .reveal-text {
   max-width: 900px;
   margin: 0 auto;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.5;
+  color: var(--text-primary);
 }
 
 .reveal-paragraph {
-  margin-bottom: 2rem;
+  display: block;
+  margin-bottom: 2.5rem;
 }
 
+.reveal-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* inline spans — text flows naturally, each sentence fades in */
 .reveal-line {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  opacity: 0.1;
-  transform: translateY(10px);
-  transition: all 0.8s ease;
+  display: inline;
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
 }
 
 .reveal-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
-/* FEATURES GRID */
+/* PHONE CAPTION */
+.phone-caption {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* HERO VISUAL (Phone + Overlays) */
+.hero-visual-section { padding-bottom: none; overflow: hidden; }
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-container { position: relative; z-index: 1; }
+.phone-mockup {
+  width: 270px; height: 560px; background: #000; border-radius: 48px;
+  padding: 12px; position: relative; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* De container die de telefoon afsnijdt */
+.feature-phone-crop {
+  width: 100%;
+  height: 150px; /* Hoogte aanpassen om te bepalen hoeveel je ziet */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+/* De 'platte' mini mockup */
+.phone-mockup.mini {
+  transform: scale(0.7);
+  transform-origin: top center;
+  box-shadow: none; /* Verwijdert de schaduw */
+  border: 1px solid var(--glass-border); /* Optioneel: subtiel randje ipv schaduw */
+  pointer-events: none; /* Zorgt dat muis-effecten van JS niet triggeren */
+}
+
+/* Geen hover effecten voor de mini versie */
+.feature-item:hover .phone-mockup.mini {
+  transform: scale(0.7); /* Blijft statisch */
+}
+
+.phone-screen { width: 100%; height: 100%; border-radius: 38px; overflow: hidden; background: #111; }
+.phone-screenshot { width: 100%; height: 100%; object-fit: cover; }
+.phone-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 100px; height: 25px; background: #000; border-radius: 0 0 15px 15px; }
+
+/* PHONE SECTION OVERLAY */
+.phone-section-overlay {
+  position: relative;
+  width: 100%;
+  margin-top: -8rem;
+  z-index: 5;
+  background: var(--bg);
+  border-top: 1px solid var(--glass-border);
+  padding: 0.75rem 0 1rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.phone-overlay-text {
+  font-size: 1rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+/* GLASS CARDS */
+.glass-card {
+  position: absolute;
+  width: 360px;
+  height: auto;
+  padding: 24px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  /* CHANGE 2: standaard van rechts binnenkomen (voor rechter kaarten) */
+  transform: translateX(120px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 20;
+}
+
+.glass-card .card-header h3 {
+  font-weight: 350;   /* 500 is medium, 400 is normaal/slank */
+  font-size: 1.1rem;  /* Optioneel: de grootte iets verfijnen */
+  letter-spacing: 0.01em;
+}
+
+/* CHANGE 2: linker kaarten komen van links — card-1 en card-5 staan links */
+.card-1,
+.card-5 {
+  transform: translateX(-120px);
+}
+
+/* CHANGE 2: zichtbaar = op de juiste positie */
+.glass-card.visible { opacity: 1; transform: translateX(0); }
+
+/* Posities */
+.card-1 { left: 8%; top: 15%; }
+.card-2 { right: 8%; top: 5%; }
+.card-3 { right: 12%; bottom: 10%; }
+.card-4 { right: 8%; top: 15%; }
+.card-5 { left: 8%; top: 5%; }
+.card-content { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 16px; }
+.card-img { width: 100%; height: auto; display: block; border-radius: 12px; }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; width: 100%; }
+.pill-hstack { display: flex; gap: 8px; width: 100%; background: rgba(0,0,0,0.05); border-radius: 24px; padding: 4px; margin-bottom: 16px; }
+.pill { padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; flex: 1; text-align: center; }
+.pill-white { background: #fff; color: #000; }
+.pill-transparent { color: var(--text-secondary); }
+.search-bar-ios { background: #F6F6F6; border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 16px; width: 100%; }
+.search-icon { width: 18px; height: 18px; stroke: var(--text-muted); }
+.card-footer { display: flex; justify-content: space-between; align-items: center; width: 100%;}
+.plus-btn, .plus-btn-large {
+  background: var(--primary); color: #fff; border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.plus-btn { width: 32px; height: 32px; }
+.plus-btn-large { width: 40px; height: 40px; font-size: 1.5rem; }
+
 .features-wrapper {
-  background-color: var(--primary);
-  padding: 2rem 0;
+  position: relative;
+  /* We halen de height-instelling hier weg, die doen we in JS */
+  z-index: 20; /* Hoger dan de hero secties */
+  pointer-events: none; /* Zorg dat je nog op knoppen in de vorige sectie kunt klikken zolang deze niet in beeld is */
+  margin-top: var(--spacing-md); /* Dit gebruikt de 6rem uit je :root */
 }
 
 .features {
-  background-color: var(--bg-secondary);
-  border-radius: 50px;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xl) 0; /* Padding boven en onder */
+  background: var(--primary);
+  border-radius: 40px 40px 0 0;
+  position: relative; /* Verander van sticky naar relative voor natuurlijke flow */
+  min-height: fit-content; /* Past zich aan de inhoud aan */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: auto;
 }
 
-.section-title {
+/* CHANGE 3: tekst en items altijd wit/licht in features */
+.features .section-title {
+  color: #ffffff;
   text-align: center;
-  font-size: 3rem;
-  margin-bottom: 4rem;
-  font-weight: 800;
+  margin-bottom: var(--spacing-lg);
+  font-size: 2.5rem;
 }
 
+/* De container voor de screenshots */
+.feature-visual {
+  display: flex;
+  flex-direction: column; /* Zet de foto's onder elkaar */
+  gap: 8px;              /* Ruimte tussen de foto's */
+  margin-top: 1.5rem;
+  align-items: center;    /* Centreert de foto's horizontaal */
+}
+
+/* De afbeeldingen zelf */
+.feature-screenshot {
+  height: 45px;          /* Vaste hoogte: pas dit aan naar wens */
+  width: auto;            /* Breedte past zich aan aan de ratio (geen vervorming) */
+  max-width: 100%;        /* Zorgt dat ze nooit breder worden dan de kaart */
+  object-fit: contain;    /* Extra veiligheid tegen vervorming */
+  background: transparent;
+}
+
+/* Zorg dat feature-items met visuals eventueel meer ruimte pakken */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: start; /* Zorgt dat items niet onnodig uitrekken als de buurman langer is */
+}
+/* Voeg dit toe onderaan bij je Media Queries voor mobiel */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr; /* Op mobiel wel onder elkaar */
+  }
 }
 
 .feature-item {
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.85); /* lets minder transparant */
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
-  color: var(--text-primary);
+  color: var(--text-primary); /* Gebruik de donkere tekstkleur */
 }
+
+.feature-item h3 {
+  color: var(--primary); /* Maak de titel blauw voor contrast */
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.feature-item p {
+  color: var(--text-secondary); /* Grijzere tekst voor de omschrijving */
+}
+
+.feature-icon { width: 48px; height: 48px; background: var(--primary); border-radius: 12px; margin: 0 auto 1rem; }
 
 /* =========================================
    PAGE COMPONENTS (Beta, Privacy, etc.)
    ========================================= */
 
+/* Section wrapper */
 .page-section {
   padding: 2rem 0 var(--spacing-xl);
   min-height: 60vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  width: 100%;
+  width: 100%; /* Ensure the section spans full width */
 }
 
-/* Updated Page Card with forced width logic */
+/* Reusable card component */
 .page-card {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 24px;
-  padding: 3.5rem; /* Slightly more padding for a premium feel */
+  padding: 3rem;
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
   margin: 0 auto;
   
-  /* Force it to fill available space up to its max-width */
-  width: 100%;
+  /* Force the card to fill the available space */
+  width: 100%; 
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-.page-card-sm { max-width: 600px; } /* Forced width for form */
-.page-card-lg { max-width: 950px; } /* Forced width for privacy */
+/* Width modifiers - Adjusted for better desktop presence */
+.page-card-sm { 
+    max-width: 500px; /* Increased from 550px to feel more substantial */
+    width: 100%;
+}
+.page-card-lg { 
+    max-width: 950px; 
+}
 
-/* Form Styling - Ensuring inputs don't collapse */
+/* Form components - Explicitly stretching everything */
 .page-card form {
     width: 100%;
-    display: block;
 }
 
 .page-card .form-group { 
@@ -398,23 +463,22 @@ body {
 
 .page-card label { 
     display: block; 
-    margin-bottom: 0.75rem; 
-    font-weight: 500;
-    font-size: 1rem;
+    margin-bottom: 0.7rem; 
+    font-weight: 500; 
+    font-size: 0.95rem;
 }
 
 .page-card input { 
   display: block;
-  width: 100% !important; /* Force 100% width of its container */
-  min-width: 100%; /* Prevent it from shrinking to text size */
+  width: 100%; /* Explicitly fill the card width */
   padding: 1.1rem; 
   border-radius: 12px; 
   border: 1px solid var(--glass-border); 
   background: rgba(255, 255, 255, 0.5); 
   color: var(--text-primary);
   font-family: inherit;
-  font-size: 1.05rem;
-  box-sizing: border-box; 
+  font-size: 1rem;
+  box-sizing: border-box; /* Critical: prevents padding from pushing input out of the card */
   transition: all 0.2s ease;
 }
 
@@ -425,23 +489,24 @@ body {
   box-shadow: 0 0 0 4px rgba(3, 195, 209, 0.1);
 }
 
-/* Card Typography */
-.page-card h1 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; }
-.page-card h2 { font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); font-weight: 600; }
-.page-card p { margin-bottom: 1.2rem; color: var(--text-secondary); line-height: 1.7; }
+/* Typography inside cards */
+.page-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; }
+.page-card h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); font-weight: 500; }
+.page-card p { margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.6; }
 .page-card ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-secondary); }
-.page-card li { margin-bottom: 0.6rem; }
+.page-card li { margin-bottom: 0.5rem; }
 
+/* Decoration & Meta */
 .meta-text { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; display: block; }
-
 .intro-box {
   border: 1px solid var(--glass-border);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.25rem;
   margin: 1.5rem 0;
   background: rgba(0,0,0,0.02);
 }
 
+/* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .intro-box { background: rgba(255, 255, 255, 0.05); }
   .page-card input { 
@@ -453,30 +518,53 @@ body {
   }
 }
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .page-section {
+    padding: 1rem 1rem var(--spacing-lg); 
+  }
+  .page-card { 
+    padding: 2.5rem 1.5rem; /* Narrower padding for more form space on phones */
+  }
+  .page-card h1 { font-size: 1.8rem; }
+}
+
 /* FOOTER */
 .footer {
   padding: 4rem 0;
   text-align: center;
-  background: var(--primary);
-  color: rgba(255, 255, 255, 0.9);
-  border-top: none;
+  background: var(--primary); /* Zelfde kleur als features */
+  color: rgba(255, 255, 255, 0.9); /* Lichte tekst */
+  border-top: none; /* Lijn verwijderen */
 }
 
-.footer-copy { color: rgba(255, 255, 255, 0.7); }
+.footer-copy {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .footer-links a {
-  color: #ffffff;
+  color: #ffffff; /* Witte links */
   text-decoration: none;
   font-size: 0.9rem;
   opacity: 0.8;
-  margin: 0 0.5rem;
+  transition: opacity 0.2s;
 }
 
-/* RESPONSIVENESS */
-@media (max-width: 768px) {
-  .nav-center { display: none; }
-  .features-grid { grid-template-columns: 1fr; }
-  .hero-visual { height: 500px; }
-  .phone-mockup { width: 240px; height: 500px; }
-  .page-card { padding: 2.5rem 1.5rem; }
-  .page-card h1 { font-size: 2rem; }
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-visual { height: auto; flex-direction: column; gap: 2rem; padding: 0 20px; }
+  .glass-card { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: 100%; max-width: 360px; }
+
+  /* Op mobiel nav-center verbergen of aanpassen */
+  .nav-container {
+    grid-template-columns: 1fr auto;
+  }
+  .nav-center {
+    display: none;
+  }
 }
