@@ -42,7 +42,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg-dark);
+    background: var(--bg-light);
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -69,7 +69,7 @@ body {
     position: relative;
     padding: var(--spacing-xl) 0;
     overflow: hidden;
-    background: #000000;
+    background: var(--bg-light);
 }
 
 /* Animated Background Gradient */
@@ -423,7 +423,7 @@ body {
    ============================================ */
 .footer {
     padding: var(--spacing-lg) 0;
-    background: var(--bg-dark);
+    background: var(--bg-light);
     border-top: 1px solid var(--glass-border);
 }
 
