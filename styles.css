@@ -444,7 +444,8 @@ body {
 /* Width modifiers - Adjusted for better desktop presence */
 .page-card-sm { 
     max-width: 500px; /* Increased from 550px to feel more substantial */
-} 
+    width: 100%;
+}
 .page-card-lg { 
     max-width: 950px; 
 }
