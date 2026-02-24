@@ -39,30 +39,24 @@ document.querySelectorAll('.feature-item').forEach(item => {
 // HERO CARDS — ÉÉN VOOR ÉÉN ZICHTBAAR
 // via IntersectionObserver op .hero-visual
 // ============================================
-const cards = document.querySelectorAll('.feature-card');
+const cards = document.querySelectorAll('.glass-card');
+const cardsContainer = document.querySelector('.cards-container');
 
 const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Stagger: elke kaart 200ms later
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add('card-visible');
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 200);
+            });
+        }
+    });
+}, { threshold: 0.1 });
 
-          // Na de entrance transitie: float animatie starten
-          card.addEventListener('transitionend', () => {
-            card.classList.add('card-animated');
-          }, { once: true });
-
-        }, index * 220);
-      });
-      cardObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.25 });
-
-const heroVisual = document.querySelector('.hero-visual');
-if (heroVisual) cardObserver.observe(heroVisual);
+if (cardsContainer) {
+    cardObserver.observe(cardsContainer);
+}
 
 // ============================================
 // FEATURE CARDS — INTERACTIEVE TILT OP HOVER
@@ -154,28 +148,3 @@ if (prefersReducedMotion.matches) {
     el.style.transition = 'none';
   });
 }
-
-// ============================================
-// CONSOLE ART
-// ============================================
-console.log(
-  `%c
-███████╗████████╗██╗   ██╗██████╗ ███████╗███╗   ██╗████████╗
-██╔════╝╚══██╔══╝██║   ██║██╔══██╗██╔════╝████╗  ██║╚══██╔══╝
-███████╗   ██║   ██║   ██║██║  ██║█████╗  ██╔██╗ ██║   ██║
-╚════██║   ██║   ██║   ██║██║  ██║██╔══╝  ██║╚██╗██║   ██║
-███████║   ██║   ╚██████╔╝██████╔╝███████╗██║ ╚████║   ██║
-╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝
-
-███╗   ███╗ █████╗ ██████╗ ███████╗
-████╗ ████║██╔══██╗██╔══██╗██╔════╝
-██╔████╔██║███████║██████╔╝███████╗
-██║╚██╔╝██║██╔══██║██╔═══╝ ╚════██║
-██║ ╚═╝ ██║██║  ██║██║     ███████║
-╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝
-
-🚀 Student Maps - Discover the best spots in your city
-`,
-  'color: #03C3D1; font-weight: bold;'
-);
-console.log('%c✨ Looking for something? Check out our GitHub!', 'color: #03C3D1; font-size: 14px; font-weight: bold;');
