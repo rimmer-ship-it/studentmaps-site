@@ -434,6 +434,82 @@ body {
 
 .feature-icon { width: 48px; height: 48px; background: var(--primary); border-radius: 12px; margin: 0 auto 1rem; }
 
+/* =========================================
+   PAGE COMPONENTS (Beta, Privacy, etc.)
+   ========================================= */
+
+/* Section wrapper */
+.page-section {
+  padding: 1rem 0 var(--spacing-xl);
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-start; /* Keeps the card near the top on large screens */
+  justify-content: center;
+}
+
+/* Reusable card component */
+.page-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Width modifiers */
+.page-card-sm { max-width: 600px; } /* Perfect for forms */
+.page-card-lg { max-width: 900px; } /* Perfect for legal text */
+
+/* Typography inside text-heavy cards */
+.page-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; }
+.page-card h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); font-weight: 500; }
+.page-card p { margin-bottom: 1rem; color: var(--text-secondary); }
+.page-card ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-secondary); }
+.page-card li { margin-bottom: 0.5rem; }
+
+/* Specific components */
+.meta-text { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; display: block; }
+.intro-box {
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  background: rgba(0,0,0,0.02);
+}
+
+/* Form styles inside the page card (Beta form) */
+.page-card .form-group { margin-bottom: 1.5rem; text-align: left; }
+.page-card label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.page-card input { 
+  width: 100%; 
+  padding: 0.8rem; 
+  border-radius: 12px; 
+  border: 1px solid var(--glass-border); 
+  background: rgba(255, 255, 255, 0.5); 
+  color: var(--text-primary);
+  font-family: inherit;
+}
+.page-card input:focus {
+  outline: 2px solid var(--primary);
+  border-color: transparent;
+}
+
+/* Dark mode overrides for new components */
+@media (prefers-color-scheme: dark) {
+  .intro-box { background: rgba(255, 255, 255, 0.05); }
+  .page-card input { background: rgba(0, 0, 0, 0.2); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .page-card { padding: 1.5rem; }
+  .page-card h1 { font-size: 1.8rem; }
+}
+
 /* FOOTER */
 .footer {
   padding: 4rem 0;
