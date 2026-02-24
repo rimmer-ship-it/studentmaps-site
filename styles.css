@@ -116,6 +116,30 @@ body {
 .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2rem; font-weight: 300; }
 .cta-buttons { display: flex; gap: 1rem; justify-content: center; }
 
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.5); /* Licht transparant voor glass look */
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
 /* CTA BUTTONS */
 .btn {
   display: inline-flex;
