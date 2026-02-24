@@ -39,18 +39,38 @@
 
     <section class="beta-section">
         <div class="container">
+            <h1 style="text-align: center; margin-bottom: 2rem; font-weight: 500;">Join the Beta group</h1>
+            
             <div class="beta-card">
-                <h1>Join the Beta group</h1>
-                <form action="https://formspree.io/f/mdallyeq" method="POST">
+                <form id="betaForm" action="https://formspree.io/f/mdallyeq" method="POST">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" required>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="full name" required>
                     </div>
+    
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="name@example.com" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+    
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="+31 6 12345678" 
+                            pattern="[+]?[0-9\s-]{7,15}" 
+                            title="Provide a valid phone number"
+                            required
+                        >
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Register/button>
+                    
+                    <div id="ok" style="display:none; color: var(--primary); text-align: center; margin-top: 1.5rem; font-weight: 500;">
+                        Thanks! We’ll reach out soon.
+                    </div>
                 </form>
             </div>
         </div>
