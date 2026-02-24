@@ -419,8 +419,9 @@ body {
   padding: 2rem 0 var(--spacing-xl);
   min-height: 60vh;
   display: flex;
-  align-items: flex-start; /* Keeps the card near the top */
+  align-items: flex-start;
   justify-content: center;
+  width: 100%; /* Ensure the section spans full width */
 }
 
 /* Reusable card component */
@@ -433,51 +434,68 @@ body {
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
   margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box; /* Ensures padding doesn't add to width */
+  
+  /* Force the card to fill the available space */
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
 }
 
-/* Width modifiers */
+/* Width modifiers - Adjusted for better desktop presence */
 .page-card-sm { 
-    max-width: 550px; /* Perfect balance for desktop forms */
+    max-width: 500px; /* Increased from 550px to feel more substantial */
 } 
 .page-card-lg { 
-    max-width: 900px; /* For text-heavy pages like Privacy */
+    max-width: 950px; 
 }
 
-/* Typography inside cards */
-.page-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; }
-.page-card h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); font-weight: 500; }
-.page-card p { margin-bottom: 1rem; color: var(--text-secondary); }
-.page-card ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-secondary); }
-.page-card li { margin-bottom: 0.5rem; }
+/* Form components - Explicitly stretching everything */
+.page-card form {
+    width: 100%;
+}
 
-/* Form components inside the card */
 .page-card .form-group { 
-    margin-bottom: 1.5rem; 
+    margin-bottom: 1.8rem; 
     text-align: left; 
     width: 100%; 
 }
-.page-card label { display: block; margin-bottom: 0.6rem; font-weight: 500; opacity: 0.9; }
+
+.page-card label { 
+    display: block; 
+    margin-bottom: 0.7rem; 
+    font-weight: 500; 
+    font-size: 0.95rem;
+}
+
 .page-card input { 
-  width: 100%; 
-  padding: 1rem; /* Slightly larger padding for better touch/feel */
+  display: block;
+  width: 100%; /* Explicitly fill the card width */
+  padding: 1.1rem; 
   border-radius: 12px; 
   border: 1px solid var(--glass-border); 
   background: rgba(255, 255, 255, 0.5); 
   color: var(--text-primary);
   font-family: inherit;
   font-size: 1rem;
-  box-sizing: border-box; /* Crucial for "fitted" mobile look */
+  box-sizing: border-box; /* Critical: prevents padding from pushing input out of the card */
+  transition: all 0.2s ease;
 }
 
 .page-card input:focus {
-  outline: 2px solid var(--primary);
-  border-color: transparent;
-  background: rgba(255, 255, 255, 0.8);
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 4px rgba(3, 195, 209, 0.1);
 }
 
-/* Decoration */
+/* Typography inside cards */
+.page-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; }
+.page-card h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); font-weight: 500; }
+.page-card p { margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.6; }
+.page-card ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-secondary); }
+.page-card li { margin-bottom: 0.5rem; }
+
+/* Decoration & Meta */
 .meta-text { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; display: block; }
 .intro-box {
   border: 1px solid var(--glass-border);
@@ -491,18 +509,21 @@ body {
 @media (prefers-color-scheme: dark) {
   .intro-box { background: rgba(255, 255, 255, 0.05); }
   .page-card input { 
-    background: rgba(0, 0, 0, 0.2); 
-    border-color: rgba(255,255,255,0.1);
+    background: rgba(0, 0, 0, 0.3); 
+    border-color: rgba(255,255,255,0.15);
+  }
+  .page-card input:focus {
+    background: rgba(0, 0, 0, 0.5);
   }
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .page-section {
-    padding: 1rem 1rem var(--spacing-lg); /* Add side padding on mobile */
+    padding: 1rem 1rem var(--spacing-lg); 
   }
   .page-card { 
-    padding: 2rem 1.5rem; /* Less padding inside so the form feels wider on small screens */
+    padding: 2.5rem 1.5rem; /* Narrower padding for more form space on phones */
   }
   .page-card h1 { font-size: 1.8rem; }
 }
