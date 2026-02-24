@@ -10,7 +10,7 @@
   --text-secondary: #4B5563;
   --text-muted: #9CA3AF;
 
-  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg: rgba(255, 255, 255, 0.25);
   --glass-border: rgba(3, 195, 209, 0.28);
   --glass-shadow: rgba(0, 0, 0, 0.08);
 
@@ -107,7 +107,6 @@ body {
 
 /* FEATURE CARDS */
 .feature-card {
-    background: rgba(255, 255, 255, 0.15);  /* Doorzichtiger: 0.15 ipv 0.72 */
     backdrop-filter: blur(35px);            /* Meer blur voor glass effect */
     -webkit-backdrop-filter: blur(35px);
     border: 1px solid rgba(3, 195, 209, 0.35);  /* Iets fellere border */
