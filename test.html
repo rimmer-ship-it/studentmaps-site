@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="#home" class="nav-brand">
@@ -22,11 +21,9 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION — verticale layout -->
   <section class="hero" id="home">
     <div class="container">
 
-      <!-- 1. Header: logo + titel + subtitel + buttons (gecentreerd bovenaan) -->
       <div class="hero-content">
         <div class="logo-container">
           <img src="logo.png" alt="Student Maps Logo" class="hero-logo">
@@ -52,31 +49,51 @@
         </div>
       </div>
 
-      <!-- 2. iPhone + glass cards eromheen (gecentreerd onder header) -->
       <div class="hero-visual">
-
         <div class="feature-card card-1">
           <div class="card-header">
-            <span class="card-icon">&#11088;</span>
-            <h3>Reviews</h3>
+            <span class="card-icon">📍</span>
+            <h3>My Spots</h3>
           </div>
-          <p>Rate and review your favorite spots. Build your reputation in the community.</p>
+          <div class="screenshot-list">
+            <div class="screenshot-item"></div>
+            <div class="screenshot-item"></div>
+            <div class="screenshot-item"></div>
+          </div>
+          <div class="card-footer">
+            <span>Suggest Spot</span>
+            <button class="plus-btn">+</button>
+          </div>
         </div>
 
         <div class="feature-card card-2">
           <div class="card-header">
-            <span class="card-icon">&#128205;</span>
-            <h3>Suggest Spots</h3>
+            <span class="card-icon">⭐</span>
+            <h3>My Reviews</h3>
           </div>
-          <p>Suggest new spots and track your contributions to the map.</p>
+          <div class="screenshot-list">
+            <div class="screenshot-item"></div>
+            <div class="screenshot-item"></div>
+            <div class="screenshot-item"></div>
+          </div>
+          <div class="card-footer">
+            <span>Write Review</span>
+            <button class="plus-btn">+</button>
+          </div>
         </div>
 
         <div class="feature-card card-3">
           <div class="card-header">
-            <span class="card-icon">&#128997;</span>
-            <h3>Live Status</h3>
+            <span class="card-icon">🔍</span>
+            <h3>Search Others</h3>
           </div>
-          <p>Navigate with real-time updates and live status indicators for all venues.</p>
+          <div class="search-bar-ios">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>Find students...</span>
+          </div>
         </div>
 
         <div class="phone-container">
@@ -87,37 +104,34 @@
             </div>
           </div>
         </div>
-
       </div>
 
     </div>
   </section>
 
-  <!-- FEATURES SECTION -->
   <section class="features" id="features">
     <div class="container">
       <h2 class="section-title">Everything you need</h2>
       <div class="features-grid">
         <div class="feature-item">
-          <div class="feature-icon">&#128506;&#65039;</div>
+          <div class="feature-icon">🗺️</div>
           <h3>Interactive Map</h3>
-          <p>Discover new venues through other students&rsquo; reviews and suggestions.</p>
+          <p>Discover new venues through other students' reviews and suggestions.</p>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">&#128101;</div>
+          <div class="feature-icon">👥</div>
           <h3>Community</h3>
           <p>Join a community of students sharing their favorite spots and honest reviews.</p>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">&#127942;</div>
+          <div class="feature-icon">🏆</div>
           <h3>Reputation</h3>
-          <p>Build your profile by contributing reviews and suggesting new venues to the map.</p>
+          <p>Build your profile by contributing reviews and suggesting new venues.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <p class="footer-copy">&copy; 2026 Student Maps. All rights reserved.</p>
