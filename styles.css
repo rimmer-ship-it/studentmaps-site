@@ -219,27 +219,25 @@ body {
 
 .phone-container { position: relative; z-index: 1; }
 
-/* De glanzende titanium rand: Minder blur, meer contrast */
+/* ----- START IPHONE 16 PRO AANPASSINGEN ----- */
 .phone-mockup {
   position: relative;
   width: 270px; 
   height: 560px;
-  background: linear-gradient(105deg, 
-    #444 0%, 
-    #fff 8%,   /* De 'harde' glanslijn */
-    #222 12%, 
-    #1a1a1a 50%, 
-    #333 88%, 
-    #eee 95%,  /* De glanslijn aan de andere kant */
-    #444 100%
+  /* Nieuw: Titanium Metallic glans effect */
+  background: linear-gradient(135deg, 
+    #9ea1a5 0%, 
+    #4f5154 15%, 
+    #2a2b2e 50%, 
+    #4f5154 85%, 
+    #9ea1a5 100%
   );
-  border-radius: 54px;
-  padding: 7px; 
-  /* Een dubbele schaduw: één voor de harde rand, één voor de diepte */
+  border-radius: 50px;
+  padding: 8px; /* Dunnere bezels */
   box-shadow: 
-    0 0 0 1px #000,
-    inset 0 0 1px 1px rgba(255,255,255,0.3),
-    0 20px 50px rgba(0,0,0,0.5);
+    inset 0 0 3px 1px rgba(255,255,255,0.4), /* Metallic highlight aan de binnenrand */
+    0 0 0 1px rgba(0,0,0,0.8), /* Strakke buitenlijn */
+    0 0px 20px rgba(0,0,0,0.4); /* Diepe drop shadow */
   z-index: 10;
 }
 
@@ -273,43 +271,25 @@ body {
 }
 
 .phone-screen { 
-    width: 100%; 
-    height: 100%; 
-    border-radius: 47px; 
-    overflow: hidden; 
-    background: #000; 
-    position: relative; /* Cruciaal voor de uitlijning van de screenshot */
-    box-shadow: inset 0 0 4px rgba(255,255,255,0.2);
+    width: 100%; height: 100%; border-radius: 42px; overflow: hidden; 
+    background: #000; position: relative; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); 
 }
+.phone-screenshot { width: 100%; height: 100%; object-fit: cover; top: 4px;}
 
-.phone-screenshot { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    
-    /* FIX: Positionering inschakelen */
-    position: absolute; 
-    top: 6px;  /* Schuif de screenshot hier met pixels omlaag tot hij mooi onder het eiland valt */
-    left: 0;
-}
-
-/* Dynamic Island: Iets hoger voor de perfecte 'bezel' look */
+/* Dynamic Island */
 .dynamic-island {
   position: absolute;
-  top: 10px; /* Ietsje omhoog zodat hij niet midden op de statusbalk van je foto zit */
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 76px;
-  height: 25px;
+  width: 70px;
+  height: 18px;
   background: #000;
   border-radius: 20px;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 7px;
-  /* Hardere rand om de island voor realisme */
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  z-index: 10;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255,255,255,0.3),
+    0 0 2px rgba(0,0,0,0.6);
 }
 
 /* Nieuw: Camera Lens glinstering (rechterkant island) */
