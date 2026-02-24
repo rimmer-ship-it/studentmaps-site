@@ -271,7 +271,7 @@ body {
 }
 
 .phone-screen { 
-    width: 100%; height: 100%; border-radius: 30px; overflow: hidden; 
+    width: 100%; height: 100%; overflow: hidden; 
     background: #000; position: relative; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); 
 }
 .phone-screenshot { width: 100%; height: 100%; object-fit: cover; top: 4px;}
@@ -287,9 +287,6 @@ body {
   background: #000;
   border-radius: 20px;
   z-index: 10;
-  box-shadow: 
-    inset 0 0 0 1px rgba(255,255,255,0.3),
-    0 0 2px rgba(0,0,0,0.6);
 }
 
 /* Nieuw: Camera Lens glinstering (rechterkant island) */
