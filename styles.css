@@ -73,18 +73,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
+}
+
+.nav-center a:hover {
+    font-weight: 700;
+    color: var(--text-primary); 
 }
 
 .nav-center a {
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.4s ease;
-}
-
-.nav-center a:hover {
-    font-weight: 700;
-    color: var(--text-primary); 
 }
 
 .nav-right {
