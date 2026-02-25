@@ -480,7 +480,7 @@ img.loaded {
 }
 
 .features {
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-xl) 0;
   background: var(--primary);
   border-radius: 40px 40px 0 0;
   position: relative; /* Verander van sticky naar relative voor natuurlijke flow */
