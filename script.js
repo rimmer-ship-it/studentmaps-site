@@ -113,4 +113,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Afhandeling van het Google Form succes bericht
+const betaForm = document.getElementById('betaForm');
+const successMessage = document.getElementById('ok');
+
+if (betaForm) {
+    betaForm.addEventListener('submit', () => {
+        // Geef de browser heel even de tijd om de data te versturen
+        setTimeout(() => {
+            // Verberg alle invoervelden en de knop
+            betaForm.querySelectorAll('.form-group, button').forEach(el => el.style.display = 'none');
+            // Toon de succes melding
+            successMessage.style.display = 'block';
+        }, 300);
+    });
+}
+
 });
