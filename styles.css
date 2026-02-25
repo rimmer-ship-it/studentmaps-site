@@ -29,10 +29,10 @@
     --nav-bg: rgba(0, 0, 0, 0.75);
   }
 }
-
 /* SMOOTH SCROLL */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Dwingt Android om niet stiekem breder te worden */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,6 +43,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%; /* Voorkomt dat de body voorbij de schermrand rekt */
   padding-bottom: env(safe-area-inset-bottom);
 }
 
