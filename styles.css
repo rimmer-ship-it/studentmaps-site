@@ -1,11 +1,12 @@
 :root {
   --primary: #03C3D1;
-  --primary-dark: #02A3AF;
-  --accent: #06B6D4;
+  --primary-dark: #03C3D1;
+  --accent: #03C3D1;
   --bg: #f3f3f3;
   --bg-secondary: #E8E8EF;
   --text-primary: #0D0D0D;
   --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-accent: #03C3D1;
   --text-muted: #9CA3AF;
   --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-border: rgba(0, 0, 0, 0.08);
@@ -205,7 +206,8 @@ body {
 }
 
 /* HERO VISUAL (Phone + Overlays) */
-.hero-visual-section { padding-bottom: none; overflow: hidden; }
+/* GEWIJZIGD: overflow: visible zodat schaduwen niet worden afgeknipt */
+.hero-visual-section { padding-bottom: none; overflow: visible; }
 .hero-visual {
   position: relative;
   width: 100%;
@@ -362,30 +364,35 @@ body {
 .phone-section-overlay {
   position: relative;
   width: 100%;
-  margin-top: -8rem;
+  margin-top: -7rem;
   z-index: 5;
   background: var(--bg);
   border-top: 1px solid var(--glass-border);
-  padding: 0.75rem 0 1rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
   text-align: center;
+  min-height: 6rem; /* zorgt dat de overlay zelf genoeg hoogte heeft */
 }
 
 .phone-overlay-text {
-  font-size: 1rem;
+  position: absolute;
+  top: 1.5rem; /* afstand vanaf de visuele bovenkant van de overlay */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 1.2rem;
   color: var(--text-muted);
   letter-spacing: 0.02em;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 /* GLASS CARDS */
 .glass-card {
   position: absolute;
-  width: 360px;
+  width: var(--card-width, 360px);
   height: auto;
   padding: 24px;
   background: var(--glass-bg);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   border-radius: 20px;
   border: 1px solid var(--glass-border);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -404,8 +411,8 @@ body {
 }
 
 /* CHANGE 2: linker kaarten komen van links — card-1 en card-5 staan links */
-.card-1,
-.card-5 {
+.card-signin,
+.card-spots {
   transform: translateX(-120px);
 }
 
@@ -413,11 +420,11 @@ body {
 .glass-card.visible { opacity: 1; transform: translateX(0); }
 
 /* Posities */
-.card-1 { left: 8%; top: 15%; }
-.card-2 { right: 8%; top: 5%; }
-.card-3 { right: 12%; bottom: 10%; }
-.card-4 { right: 8%; top: 15%; }
-.card-5 { left: 8%; top: 5%; }
+.card-types { right: 12%; top: 15%; width: 320px; }
+.card-signin { left: 16%; top: 5%; width: 260px; }
+.card-spots { left: 8%; top: 15%; width: 360px; }
+.card-reviews { right: 8%; top: 5%; width: 360px; }
+.card-search { right: 20%; bottom: 5%; width: 280px; }
 .card-content { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 16px; }
 .card-img { width: 100%; height: auto; display: block; border-radius: 12px; }
 .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; width: 100%; }
@@ -440,11 +447,11 @@ body {
   /* We halen de height-instelling hier weg, die doen we in JS */
   z-index: 20; /* Hoger dan de hero secties */
   pointer-events: none; /* Zorg dat je nog op knoppen in de vorige sectie kunt klikken zolang deze niet in beeld is */
-  margin-top: var(--spacing-md); /* Dit gebruikt de 6rem uit je :root */
+  margin-top: var(--spacing-lg);
 }
 
 .features {
-  padding: var(--spacing-xl) 0; /* Padding boven en onder */
+  padding: var(--spacing-lg) 0;
   background: var(--primary);
   border-radius: 40px 40px 0 0;
   position: relative; /* Verander van sticky naar relative voor natuurlijke flow */
@@ -488,12 +495,6 @@ body {
   gap: 2rem;
   align-items: start; /* Zorgt dat items niet onnodig uitrekken als de buurman langer is */
 }
-/* Voeg dit toe onderaan bij je Media Queries voor mobiel */
-@media (max-width: 768px) {
-  .features-grid {
-    grid-template-columns: 1fr; /* Op mobiel wel onder elkaar */
-  }
-}
 
 .feature-item {
   padding: 2rem;
@@ -517,20 +518,18 @@ body {
 .feature-icon { width: 48px; height: 48px; background: var(--primary); border-radius: 12px; margin: 0 auto 1rem; }
 
 /* =========================================
-   PAGE COMPONENTS (Beta, Privacy, etc.)
+   PAGE COMPONENTS
    ========================================= */
 
-/* Section wrapper */
 .page-section {
-  padding: 2rem 0 var(--spacing-xl);
-  min-height: 60vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%; /* Ensure the section spans full width */
+  padding: var(--spacing-md) 0 var(--spacing-xl);
 }
 
-/* Reusable card component */
+/* Alleen voor pagina's zonder hero-header erboven */
+.page-section-top {
+  padding-top: calc(var(--spacing-lg) + 80px);
+}
+
 .page-card {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
@@ -538,101 +537,62 @@ body {
   border-radius: 24px;
   padding: 3rem;
   border: 1px solid var(--glass-border);
-  color: var(--text-primary);
   margin: 0 auto;
-  
-  /* Force the card to fill the available space */
-  width: 100%; 
-  display: flex;
-  flex-direction: column;
 }
 
-/* Width modifiers - Adjusted for better desktop presence */
-.page-card-sm { 
-    max-width: 500px; /* Increased from 550px to feel more substantial */
-    width: 100%;
-}
-.page-card-lg { 
-    max-width: 950px; 
-}
+.page-card-sm { max-width: 600px; }
+.page-card-lg { max-width: 960px; }
 
-/* Form components - Explicitly stretching everything */
-.page-card form {
-    width: 100%;
-}
+/* Form */
+.form-group { margin-bottom: 1.8rem; }
 
-.page-card .form-group { 
-    margin-bottom: 1.8rem; 
-    text-align: left; 
-    width: 100%; 
-}
-
-.page-card label { 
-    display: block; 
-    margin-bottom: 0.7rem; 
-    font-weight: 500; 
-    font-size: 0.95rem;
-}
-
-.page-card input { 
+.form-group label {
   display: block;
-  width: 100%; /* Explicitly fill the card width */
-  padding: 1.1rem; 
-  border-radius: 12px; 
-  border: 1px solid var(--glass-border); 
-  background: rgba(255, 255, 255, 0.5); 
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1.1rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.5);
   color: var(--text-primary);
   font-family: inherit;
   font-size: 1rem;
-  box-sizing: border-box; /* Critical: prevents padding from pushing input out of the card */
   transition: all 0.2s ease;
 }
 
-.page-card input:focus {
+.form-group input:focus {
   outline: none;
   border-color: var(--primary);
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0 0 4px rgba(3, 195, 209, 0.1);
 }
 
-/* Typography inside cards */
+/* Typography */
 .page-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; }
 .page-card h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--primary); font-weight: 500; }
-.page-card p { margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.6; }
+.page-card p  { margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.6; }
 .page-card ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-secondary); }
 .page-card li { margin-bottom: 0.5rem; }
 
-/* Decoration & Meta */
 .meta-text { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; display: block; }
 .intro-box {
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   padding: 1.25rem;
   margin: 1.5rem 0;
-  background: rgba(0,0,0,0.02);
+  background: rgba(0, 0, 0, 0.02);
 }
 
-/* Dark mode support */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   .intro-box { background: rgba(255, 255, 255, 0.05); }
-  .page-card input { 
-    background: rgba(0, 0, 0, 0.3); 
-    border-color: rgba(255,255,255,0.15);
-  }
-  .page-card input:focus {
-    background: rgba(0, 0, 0, 0.5);
-  }
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .page-section {
-    padding: 1rem 1rem var(--spacing-lg); 
-  }
-  .page-card { 
-    padding: 2.5rem 1.5rem; /* Narrower padding for more form space on phones */
-  }
-  .page-card h1 { font-size: 1.8rem; }
+  .form-group input { background: rgba(0, 0, 0, 0.3); border-color: rgba(255, 255, 255, 0.15); }
+  .form-group input:focus { background: rgba(0, 0, 0, 0.5); }
 }
 
 /* FOOTER */
@@ -661,16 +621,72 @@ body {
 }
 .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .hero-visual { height: auto; flex-direction: column; gap: 2rem; padding: 0 20px; }
-  .glass-card { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: 100%; max-width: 360px; }
+/* =========================================
+   RESPONSIVE
+   1024px → structurele layout (nav, phone+cards)
+   768px  → spacing, typografie, form
+   ========================================= */
 
-  /* Op mobiel nav-center verbergen of aanpassen */
+/* Structurele layout: nav en phone+cards sectie */
+@media (max-width: 1024px) {
   .nav-container {
     grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
   }
+
+  .nav-brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .nav-right {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
   .nav-center {
-    display: none;
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    gap: 3rem;
   }
+
+  /* Phone sectie: vaste hoogte met padding-top zodat schaduwen ruimte hebben */
+  .hero-visual {
+    height: 660px;
+    padding: 2rem 20px 0;
+  }
+
+  .phone-section-overlay {
+    margin-top: -6rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Cards blijven als overlay, kleinere breedtes voor mobile */
+  .card-types  { right: 2%; top: 32%; width: 250px; }
+  .card-signin { left: 2%; top: 20%;  width: 200px; }
+  .card-spots  { left: 2%; top: 25%; width: 240px; }
+  .card-reviews{ right: 2%; top: -12%; width: 280px; }
+  .card-search { right: 8%; bottom: -4%; width: 240px; }
+}
+
+/* Spacing, typografie, form */
+@media (max-width: 768px) {
+  .hero-header {
+    padding: calc(var(--spacing-xl) + 70px) 1.5rem var(--spacing-md);
+  }
+  .hero-title { font-size: 2.2rem; }
+
+  .features-wrapper { margin-top: var(--spacing-xl); }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .features { padding: var(--spacing-md) 0; }
+
+  .page-section { padding: var(--spacing-md) 0 var(--spacing-lg); }
+  .page-section-top { padding-top: calc(var(--spacing-md) + 70px); }
+  .page-card { padding: 2rem 1.5rem; }
+  .page-card h1 { font-size: 1.8rem; }
 }
