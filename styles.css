@@ -82,6 +82,11 @@ body {
   transition: color 0.4s ease;
 }
 
+.nav-center a:hover {
+    font-weight: 700;
+    color: var(--text-primary); 
+}
+
 .nav-right {
   display: flex;
   align-items: center;
