@@ -718,7 +718,7 @@ body {
 /* Spacing, typografie, form */
 @media (max-width: 768px) {
   .hero-header {
-    padding: calc(var(--spacing-xl) + 70px) 1.5rem var(--spacing-md);
+    padding: calc(var(--spacing-lg) + 70px) 1.5rem var(--spacing-md);
   }
   .hero-title { font-size: 2.2rem; }
 
