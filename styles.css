@@ -353,6 +353,7 @@ body {
   box-shadow: none; /* Verwijdert de schaduw */
   border: 1px solid var(--glass-border); /* Optioneel: subtiel randje ipv schaduw */
   pointer-events: none; /* Zorgt dat muis-effecten van JS niet triggeren */
+  flex-shrink: 0;
 }
 
 /* Geen hover effecten voor de mini versie */
@@ -428,7 +429,15 @@ body {
 .card-content { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 16px; }
 .card-img { width: 100%; height: auto; display: block; border-radius: 12px; }
 .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; width: 100%; }
-.pill-hstack { display: flex; gap: 8px; width: 100%; background: rgba(0,0,0,0.05); border-radius: 24px; padding: 4px; margin-bottom: 16px; }
+.pill-hstack { 
+  display: flex; 
+  gap: 8px; 
+  width: 100%; 
+  background: rgba(0,0,0,0.05); 
+  border-radius: 24px; 
+  padding: 4px; 
+  margin-bottom: 16px; 
+}
 .pill { padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; flex: 1; text-align: center; }
 .pill-white { background: #fff; color: #000; }
 .pill-transparent { color: var(--text-secondary); }
@@ -438,6 +447,7 @@ body {
 .plus-btn, .plus-btn-large {
   background: var(--primary); color: #fff; border: none; border-radius: 50%;
   display: flex; align-items: center; justify-content: center; cursor: pointer;
+  flex-shrink: 0;
 }
 .plus-btn { width: 32px; height: 32px; }
 .plus-btn-large { width: 40px; height: 40px; font-size: 1.5rem; }
@@ -598,6 +608,7 @@ body {
 /* FOOTER */
 .footer {
   padding: 4rem 0;
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom));
   text-align: center;
   background: var(--primary); /* Zelfde kleur als features */
   color: rgba(255, 255, 255, 0.9); /* Lichte tekst */
@@ -666,7 +677,7 @@ body {
 
   /* Cards blijven als overlay, kleinere breedtes voor mobile */
   .card-types  { right: 2%; top: 32%; width: 250px; }
-  .card-signin { left: 2%; top: 20%;  width: 200px; }
+  .card-signin { left: 2%; top: 2%;  width: 200px; }
   .card-spots  { left: 2%; top: 25%; width: 240px; }
   .card-reviews{ right: 2%; top: -12%; width: 280px; }
   .card-search { right: 8%; bottom: -4%; width: 240px; }
@@ -684,6 +695,9 @@ body {
     grid-template-columns: 1fr;
   }
   .features { padding: var(--spacing-md) 0; }
+
+  .pill-hstack { gap: 0; padding: 2px; }
+  .pill { padding: 4px 12px; font-size: 0.8rem; font-weight: 400; }
 
   .page-section { padding: var(--spacing-md) 0 var(--spacing-lg); }
   .page-section-top { padding-top: calc(var(--spacing-md) + 70px); }
