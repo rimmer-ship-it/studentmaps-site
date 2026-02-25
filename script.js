@@ -71,17 +71,38 @@ document.addEventListener('mousemove', (e) => {
   });
 });
 
+// 5. Feature blokken één voor één van beneden animeren
+const featureItems = document.querySelectorAll('.feature-item');
+const featuresSection = document.querySelector('.features');
+
+if (featuresSection) {
+    const featureObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                featureItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, index * 200); // 200ms vertraging per blok
+                });
+                featureObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    featureObserver.observe(featuresSection);
+}
+
   // Smooth scroll — Deze stond buiten de DOMContentLoaded en had een fout
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        // Bij de features sectie willen we naar de wrapper scrollen
-        const offset = target.classList.contains('features') ? 0 : 0;
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      // Bij de features sectie willen we naar de wrapper scrollen
+      const offset = target.classList.contains('features') ? 0 : 0;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
+});
 
 });
