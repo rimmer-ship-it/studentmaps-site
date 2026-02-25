@@ -77,14 +77,14 @@ body {
 }
 
 .nav-center a:hover {
-    font-weight: 700;
-    color: var(--text-primary); 
+    color: var(--text-primary);
+    transform: translateY(-2px);
 }
 
 .nav-center a {
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.4s ease;
+  transition: color 0.4s ease, transform 0.2s ease;
 }
 
 .nav-right {
