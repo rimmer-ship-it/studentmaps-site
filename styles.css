@@ -358,14 +358,16 @@ img.loaded {
   position: relative;
 }
 
-/* De 'platte' mini mockup */
 .phone-mockup.mini {
-  transform: scale(0.7);
+  transform: scale(0.7) translateZ(0); /* translateZ(0) dwingt hardware-acceleratie af tegen render-bugs */
   transform-origin: top center;
-  box-shadow: none; /* Verwijdert de schaduw */
-  border: 1px solid var(--glass-border); /* Optioneel: subtiel randje ipv schaduw */
-  pointer-events: none; /* Zorgt dat muis-effecten van JS niet triggeren */
-  flex-shrink: 0;
+  box-shadow: none; 
+  border: 1px solid var(--glass-border); 
+  pointer-events: none; 
+  
+  /* De keiharde garanties tegen het in elkaar drukken (squishing): */
+  flex: 0 0 275px; /* Mag niet groeien, mag niet krimpen, startwaarde is altijd exact 275px */
+  min-width: 275px; /* Negeert elke foute berekening van de mobiele browser */
 }
 
 /* Geen hover effecten voor de mini versie */
@@ -716,6 +718,7 @@ img.loaded {
   .phone-section-overlay {
     margin-top: -6rem;
     padding-bottom: 1rem;
+    margin-bottom: -3rem
   }
 
   /* Cards blijven als overlay, kleinere breedtes voor mobile */
@@ -743,6 +746,10 @@ img.loaded {
     grid-template-columns: 1fr;
   }
   .features { padding: var(--spacing-md) 0; }
+  .features .section-title {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.8rem;
+  }
 
   .pill-hstack { gap: 0; padding: 2px; }
   .pill { padding: 4px 12px; font-size: 0.8rem; font-weight: 400; }
