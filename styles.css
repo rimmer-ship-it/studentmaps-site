@@ -471,7 +471,7 @@ img.loaded {
   /* We halen de height-instelling hier weg, die doen we in JS */
   z-index: 20; /* Hoger dan de hero secties */
   pointer-events: none; /* Zorg dat je nog op knoppen in de vorige sectie kunt klikken zolang deze niet in beeld is */
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
 }
 
 .features {
@@ -713,6 +713,10 @@ img.loaded {
   .hero-visual {
     height: 660px;
     padding: 2rem 20px 0;
+  }
+
+  .scroll-text-section {
+    margin-bottom: var(--spacing-lg);
   }
 
   .phone-section-overlay {
