@@ -42,6 +42,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--spacing-md); }
@@ -513,6 +514,14 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
   color: var(--text-primary); /* Gebruik de donkere tekstkleur */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 1.5s ease;
+}
+
+.feature-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .feature-item h3 {
@@ -605,6 +614,41 @@ body {
   .form-group input:focus { background: rgba(0, 0, 0, 0.5); }
 }
 
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: 1rem;
+}
+
+.social-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    opacity: 1;
+    transition: transform 0.2s ease; /* ← transform toevoegen */
+}
+
+.social-icon:hover {
+    transform: scale(1.2); /* ← 20% vergroot, pas aan naar smaak */
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* footer-social heeft geen eigen margin-top meer nodig */
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 /* FOOTER */
 .footer {
   padding: 4rem 0;
@@ -630,7 +674,12 @@ body {
 .footer-links a:hover {
   opacity: 1;
 }
-.footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; }
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
 
 /* =========================================
    RESPONSIVE
@@ -641,27 +690,10 @@ body {
 /* Structurele layout: nav en phone+cards sectie */
 @media (max-width: 1024px) {
   .nav-container {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: 0.5rem;
+      grid-template-columns: auto 1fr auto;
   }
-
-  .nav-brand {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .nav-right {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .nav-center {
-    display: flex;
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: center;
-    gap: 3rem;
+  .nav-brand span {
+      display: none;
   }
 
   /* Phone sectie: vaste hoogte met padding-top zodat schaduwen ruimte hebben */
@@ -680,7 +712,7 @@ body {
   .card-signin { left: 2%; top: 2%;  width: 200px; }
   .card-spots  { left: 2%; top: 25%; width: 240px; }
   .card-reviews{ right: 2%; top: -12%; width: 280px; }
-  .card-search { right: 8%; bottom: -4%; width: 240px; }
+  .card-search { right: 2%; bottom: -8%; width: 240px; }
 }
 
 /* Spacing, typografie, form */
@@ -703,4 +735,8 @@ body {
   .page-section-top { padding-top: calc(var(--spacing-md) + 70px); }
   .page-card { padding: 2rem 1.5rem; }
   .page-card h1 { font-size: 1.8rem; }
+
+  .nav-social {
+    display: none;
+  }
 }
