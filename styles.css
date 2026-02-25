@@ -664,7 +664,7 @@ img.loaded {
   padding: 4rem 0;
   padding-bottom: calc(4rem + env(safe-area-inset-bottom));
   text-align: center;
-  background: var(--bg-tertiary); /* Zelfde kleur als features */
+  background: #e6e6e6; /* Zelfde kleur als features */
   color: #000000; /* Lichte tekst */
   border-top: none; /* Lijn verwijderen */
 }
@@ -731,7 +731,12 @@ img.loaded {
     padding: calc(var(--spacing-lg) + 70px) 1.5rem var(--spacing-md);
   }
   .hero-title { font-size: 2.2rem; }
-
+  .container {
+    padding: 0 1rem; /* Halveert de padding op mobiel */
+  }
+  .nav-center {
+    gap: 1rem; /* Halveert de ruimte tussen Home en Features */
+  }
   .features-wrapper { margin-top: var(--spacing-xl); }
   .features-grid {
     grid-template-columns: 1fr;
