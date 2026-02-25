@@ -734,7 +734,7 @@ img.loaded {
   .hero-header {
     padding: calc(var(--spacing-lg) + 70px) 1.5rem var(--spacing-md);
   }
-  .hero-title { font-size: 2.2rem; }
+  .hero-title { font-size: 2.4rem; }
   .container {
     padding: 0 1rem; /* Halveert de padding op mobiel */
   }
