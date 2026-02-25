@@ -43,36 +43,41 @@
     <section class="page-section">
         <div class="container">
             <div class="page-card page-card-sm">
-                <form id="betaForm" action="https://formspree.io/f/mdallyeq" method="POST">
+                <form id="betaForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeCPc7-6g87QqsMfpVtl4X3JfxkeQIbDhWqUocADtz78FBkxw/formResponse" method="POST" target="hidden_iframe">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="full name" required>
+                        <input type="text" id="name" name="entry.1250525655" placeholder="full name" required>
                     </div>
-    
+
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                        <input type="email" id="email" name="entry.614573572" placeholder="name@example.com" required>
                     </div>
-    
+
                     <div class="form-group">
                         <label for="phone">Phone number</label>
                         <input 
                             type="tel" 
                             id="phone" 
-                            name="phone" 
+                            name="entry.372404016" 
                             placeholder="+31 6 12345678" 
                             pattern="[+]?[0-9\s-]{7,15}" 
                             title="Provide a valid phone number"
                             required
                         >
                     </div>
-    
+
                     <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Get Access</button>
                     
-                    <div id="ok" style="display:none; color: var(--primary); text-align: center; margin-top: 1.5rem; font-weight: 500;">
-                        Thanks! We’ll reach out soon.
+                    <div id="ok" class="success-card" style="display:none;">
+                        <h3>Thank you!</h3>
+                        <p>We've added you to the early access group. Keep an eye on your inbox! </p>
+                        <p>You will receive an invitation link from <strong>Apple TestFlight</strong> to download the early build.</p>
+                        <a href="test.html" class="btn btn-primary" style="margin-top: 1rem;">Back to Home</a>
                     </div>
                 </form>
+
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
             </div>
         </div>
     </section>
