@@ -162,24 +162,6 @@ img.loaded {
     align-items: center;
 }
 
-/* IPAD & MOBILE: Tekst boven, buttons 50/50 onder */
-@media (max-width: 1024px) {
-    .cookie-container {
-        flex-direction: column; /* Tekst boven, buttons onder */
-        text-align: center;
-        padding: 1rem 1rem; /* Goede padding boven/onder */
-        gap: 1.5rem;
-    }
-
-    .cookie-buttons {
-        width: 100%; /* Groep pakt volle breedte */
-    }
-
-    .cookie-buttons .btn {
-        flex: 1; /* Beide knoppen precies 50% breedte */
-    }
-}
-
 .cookie-banner.hidden { display: none !important; }
 
 /* HERO HEADER */
@@ -798,6 +780,21 @@ img.loaded {
    2. NIEUW: TABLET / IPAD (max-width: 1024px)
    ========================================= */
 @media (max-width: 1024px) {
+    .cookie-container {
+        flex-direction: column; /* Tekst boven, buttons onder */
+        text-align: center;
+        padding: 1rem 1rem; /* Goede padding boven/onder */
+        gap: 4px;
+        box-shadow: none;
+    }
+
+    .cookie-buttons {
+        width: 100%; /* Groep pakt volle breedte */
+    }
+
+    .cookie-buttons .btn {
+        flex: 1; /* Beide knoppen precies 50% breedte */
+    }
   .hero-title { font-size: 3.5rem; }
 
   /* Glass cards strakker rond de telefoon positioneren */
