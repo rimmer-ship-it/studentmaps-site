@@ -448,7 +448,7 @@ img.loaded {
 .glass-card.visible { opacity: 1; transform: translateX(0); }
 
 /* Posities */
-.card-types { right: 12%; top: 15%; width: 320px; }
+.card-types { right: 10%; top: 18%; width: 360px; }
 .card-signin { left: 16%; top: 5%; width: 260px; }
 .card-spots { left: 8%; top: 15%; width: 360px; }
 .card-reviews { right: 8%; top: 5%; width: 360px; }
