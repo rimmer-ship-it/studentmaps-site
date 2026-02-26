@@ -116,6 +116,72 @@ img.loaded {
     opacity: 1;
 }
 
+/* Cookie Banner Basis */
+.cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.cookie-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    
+    /* DESKTOP DEFAULT: Alles op 1 lijn */
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    
+    gap: 2rem;
+    width: 100%;
+    max-width: var(--container-max);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.cookie-buttons {
+    display: flex;
+    flex-direction: row; /* Knoppen altijd naast elkaar */
+    gap: 1rem;
+    flex-shrink: 0; /* Zorgt dat buttons niet in elkaar gedrukt worden op desktop */
+}
+
+.cookie-buttons .btn {
+    white-space: nowrap; /* Tekst loopt NOOIT om */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IPAD & MOBILE: Tekst boven, buttons 50/50 onder */
+@media (max-width: 1024px) {
+    .cookie-container {
+        flex-direction: column; /* Tekst boven, buttons onder */
+        text-align: center;
+        padding: 1rem 1rem; /* Goede padding boven/onder */
+        gap: 1.5rem;
+    }
+
+    .cookie-buttons {
+        width: 100%; /* Groep pakt volle breedte */
+    }
+
+    .cookie-buttons .btn {
+        flex: 1; /* Beide knoppen precies 50% breedte */
+    }
+}
+
+.cookie-banner.hidden { display: none !important; }
+
 /* HERO HEADER */
 .hero-header {
   padding: calc(var(--spacing-md) + 80px) 0 var(--spacing-md);
