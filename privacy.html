@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-48RDYSEJPC"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-48RDYSEJPC');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain">
     <title>Privacy Policy - Student Maps</title>
@@ -83,7 +91,14 @@
                     <li>To maintain the integrity of the platform (prevent abuse, spam, and fraud).</li>
                 </ul>
 
-                <h2>3. Service providers and third parties</h2>
+                <h2>3. Cookies & Analytics</h2>
+                <ul>
+                    <li>We use cookies to see which parts of our map are popular and to fix bugs.</li>
+                    <li>If you choose <strong>"Accept all"</strong>, we use Google Analytics to help us improve.</li>
+                    <li>If you choose <strong>"Necessary only"</strong>, we disable all tracking scripts and onlysave your preference so we don't ask you again. No personal data is sold to third parties—ever.</li>
+                </ul>
+
+                <h2>4. Service providers and third parties</h2>
                 <p>We use service providers to operate the App. These providers process data on our behalf to deliver the service:</p>
                 <ul>
                     <li><strong>Supabase</strong> (backend hosting, database, and authentication). <a href="https://supabase.com/privacy" target="_blank">Privacy Policy</a>.</li>
@@ -91,13 +106,13 @@
                     <li><strong>Apple MapKit</strong> (map rendering).</li>
                 </ul>
 
-                <h2>4. Data retention</h2>
+                <h2>5. Data retention</h2>
                 <ul>
                     <li>We keep account and community content for as long as your account is active.</li>
                     <li>You can request deletion of your account; when deleted, we remove or anonymize personal data.</li>
                 </ul>
 
-                <h2>5. Contact</h2>
+                <h2>6. Contact</h2>
                 <p>
                     If you have questions or requests about privacy, contact us at:
                     <a href="mailto:privacy@studentmaps.nl" style="color: var(--primary);">privacy@studentmaps.nl</a>
@@ -125,6 +140,16 @@
             </div>
         </div>
     </footer>
+    
+    <div id="cookie-banner" class="cookie-banner hidden">
+        <div class="cookie-container">
+            <p>We use cookies to understand how students use our map. This helps us build a better experience. Read more in our <a href="privacy.html" style="color: var(--primary); text-decoration: underline;">privacy statement</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-primary">Accept all</button>
+                <button id="reject-cookies" class="btn btn-secondary">Necessary</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
