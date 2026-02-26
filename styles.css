@@ -780,21 +780,22 @@ img.loaded {
    2. NIEUW: TABLET / IPAD (max-width: 1024px)
    ========================================= */
 @media (max-width: 1024px) {
-    .cookie-container {
-        flex-direction: column; /* Tekst boven, buttons onder */
-        text-align: center;
-        padding: 1rem 1rem; /* Goede padding boven/onder */
-        gap: 4px;
-        box-shadow: none;
-    }
+  .cookie-container {
+    flex-direction: column; /* Tekst boven, buttons onder */
+    text-align: center;
+    padding: 1.5rem 1.5rem; /* Goede padding boven/onder */
+    gap: 24px;
+    box-shadow: none;
+  }
 
-    .cookie-buttons {
-        width: 100%; /* Groep pakt volle breedte */
-    }
+  .cookie-buttons {
+    width: 100%; /* Groep pakt volle breedte */
+  }
 
-    .cookie-buttons .btn {
-        flex: 1; /* Beide knoppen precies 50% breedte */
-    }
+  .cookie-buttons .btn {
+    flex: 1; /* Beide knoppen precies 50% breedte */
+  }
+
   .hero-title { font-size: 3.5rem; }
 
   /* Glass cards strakker rond de telefoon positioneren */
@@ -808,25 +809,33 @@ img.loaded {
 
   /* Features sectie: Horizontale swipe-slider */
   .features-grid {
-      display: flex;
-      overflow-x: auto;
-      gap: 20px;
-      padding: 20px 20px 40px 20px;
-      margin: 0 -20px;
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 20px 40px 20px;
+    margin: 0 -20px;
   }
   
   .feature-item {
-      flex: 0 0 320px; 
+    flex: 0 0 320px; 
   }
 }
 
 /* Spacing, typografie, form */
 @media (max-width: 768px) {
   .nav-container {
-      grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
   }
   .nav-brand span {
-      display: none;
+    display: none;
+  }
+
+  .cookie-container {
+    flex-direction: column; /* Tekst boven, buttons onder */
+    text-align: center;
+    padding: 1rem 1rem; /* Goede padding boven/onder */
+    gap: 12px;
+    box-shadow: none;
   }
 
   /* Phone sectie: vaste hoogte met padding-top zodat schaduwen ruimte hebben */
