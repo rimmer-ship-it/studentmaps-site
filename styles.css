@@ -858,9 +858,9 @@ img.loaded {
   /* Cards blijven als overlay, kleinere breedtes voor mobile */
   .card-types  { right: 2%; top: 32%; width: 250px; }
   .card-signin { left: 2%; top: 2%;  width: 200px; }
-  .card-spots  { left: 2%; top: 25%; width: 240px; }
+  .card-spots  { left: 2%; top: 22%; width: 250px; }
   .card-reviews{ right: 2%; top: -12%; width: 280px; }
-  .card-search { right: 2%; bottom: -8%; width: 240px; }
+  .card-search { right: 2%; bottom: -4%; width: 240px; }
   .hero-header {
     padding: calc(var(--spacing-lg) + 70px) 1.5rem var(--spacing-md);
   }
