@@ -129,4 +129,27 @@ if (betaForm) {
     });
 }
 
+const banner = document.getElementById('cookie-banner');
+const acceptBtn = document.getElementById('accept-cookies');
+const rejectBtn = document.getElementById('reject-cookies');
+const GA_ID = 'G-48RDYSEJPC';
+
+if (banner && acceptBtn && rejectBtn) {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) { banner.classList.remove('hidden'); }
+    else if (consent === 'rejected') { window['ga-disable-' + GA_ID] = true; }
+
+    acceptBtn.onclick = () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        banner.classList.add('hidden');
+        location.reload(); 
+    };
+
+    rejectBtn.onclick = () => {
+        localStorage.setItem('cookieConsent', 'rejected');
+        window['ga-disable-' + GA_ID] = true;
+        banner.classList.add('hidden');
+    };
+}
+
 });
