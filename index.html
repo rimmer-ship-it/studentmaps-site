@@ -3,11 +3,10 @@
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-48RDYSEJPC"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-48RDYSEJPC');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-48RDYSEJPC');
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,6 +29,7 @@
       background: #f5f5f7;
       min-height: 100vh;
       display: flex;
+      flex-direction: column; /* Zorgt ervoor dat de footer netjes onder de card valt */
       align-items: center;
       justify-content: center;
       padding: 24px;
@@ -61,15 +61,6 @@
       line-height: 1.6;
       margin-bottom: 36px;
     }
-    .badge {
-      display: inline-block;
-    }
-    .badge img {
-      width: 156px;
-      height: auto;
-      border-radius: 0;
-      margin: 0;
-    }
     .soon {
       display: inline-block;
       margin-top: 8px;
@@ -81,16 +72,48 @@
       font-weight: 600;
       font-size: 16px;
     }
+    
+    /* Nieuwe styling voor de bedrijfsgegevens / footer */
+    .company-footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: #86868b;
+      line-height: 1.8;
+      max-width: 400px;
+    }
+    .company-footer strong {
+      color: #1d1d1f;
+      font-weight: 600;
+    }
+    .company-footer a {
+      color: #86868b;
+      text-decoration: none;
+      border-bottom: 1px solid #d2d2d7;
+      transition: all 0.2s ease;
+    }
+    .company-footer a:hover {
+      color: #1d1d1f;
+      border-bottom-color: #1d1d1f;
+    }
   </style>
 </head>
 <body>
+  
   <div class="card">
     <img src="/favicon.png" alt="Student Maps logo">
     <h1>Student Maps</h1>
-    <p>Discover the best spots in your city.</p>
+    <p>Discover the best spots in your city. Built for students, by students.</p>
+    <a class="soon" href="mailto:spots@studentmaps.nl">App in development</a>
+  </div>
 
-    <!-- Vervang de href als de app live is in de App Store -->
-    <a class="soon" href="#">Not available yet</a>
+  <div class="company-footer">
+    <strong>Student Maps</strong><br>
+    Developing commercial mobile applications for students.<br><br>
+    <strong>Company Details</strong><br>
+    KvK number: 93719485<br>
+    Middenweg 231 3, 1098AP Amsterdam, The Netherlands<br>
+    Contact: <a href="mailto:spots@studentmaps.nl">spots@studentmaps.nl</a><br><br>
   </div>
 
   <div id="cookie-banner" class="cookie-banner hidden">
